@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ImChat
+IM:
+  version: 1.0
+server:
+  port: 9988
+  servlet:
+    encoding:
+      charset: utf-8
