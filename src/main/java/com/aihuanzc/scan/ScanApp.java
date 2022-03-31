@@ -10,7 +10,7 @@ public class ScanApp {
         ips = "39.105.7.152";
         // 待扫描的port范围
         String ports = "0-9999";
-        Scanner.start(ips,ports);
+        Scanner.start(ips, ports);
 
 
     }

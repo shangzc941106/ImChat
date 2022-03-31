@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
  * @date 2020/11/14 6:16 PM
  */
 @Configuration
-public class WebConfig  implements ServletContextInitializer {
+public class WebConfig implements ServletContextInitializer {
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
@@ -28,6 +28,6 @@ public class WebConfig  implements ServletContextInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         servletContext.addListener(WebAppRootListener.class);
         servletContext.setInitParameter("org.apache.tomcat.websocket.textBufferSize",
-              "10240000");
+                                        "10240000");
     }
 }

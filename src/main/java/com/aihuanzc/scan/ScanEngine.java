@@ -16,8 +16,8 @@ public class ScanEngine {
     public static final String TCP_FULL_CONNECT_SCAN = "TCP_FULL_CONNECT_SCAN";
     public static final String TCP_HALF_CONNECT_SCAN = "TCP_HALF_CONNECT_SCAN";
 
-    public static ScanObject scan(ScanObject object, String scanEngine){
-        switch (scanEngine){
+    public static ScanObject scan(ScanObject object, String scanEngine) {
+        switch (scanEngine) {
             case TCP_FULL_CONNECT_SCAN:
                 return tcpFullConnectScan(object);
             case TCP_HALF_CONNECT_SCAN:
@@ -28,13 +28,14 @@ public class ScanEngine {
 
     /**
      * tcp全连接扫描
+     *
      * @param object
      * @return
      */
-    private static ScanObject tcpFullConnectScan(ScanObject object){
-        try{
+    private static ScanObject tcpFullConnectScan(ScanObject object) {
+        try {
             // 全连接扫描，发现可用服务
-            Socket socket = new Socket(object.getIp(),object.getPort());
+            Socket socket = new Socket(object.getIp(), object.getPort());
             object.setOpen(true);
             object.setService();
             // 发送招手信息
@@ -46,13 +47,13 @@ public class ScanEngine {
             String serviceBanner = re.readLine();
             object.setBanner(serviceBanner);
             object.setService();
-            logger.info("[-] Find service :"+ object);
+            logger.info("[-] Find service :" + object);
             socket.close();
         } catch (ConnectException e) {
             // 打印连接失败的端口
 //            logger.info("[-] Close: " + object.getIp() + ":" + object.getPort());
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // 出现其他异常
             logger.info("[-] " + object.toString() + "end with unexecepted exeception:" + e.getMessage());
         }
@@ -62,10 +63,11 @@ public class ScanEngine {
 
     /**
      * TPC 半连接扫描
+     *
      * @param object
      * @return
      */
-    private static ScanObject tcpHalfConnectScan(ScanObject object){
+    private static ScanObject tcpHalfConnectScan(ScanObject object) {
         // TODO 待实现tcp半连接扫描
         return object;
     }
